@@ -1,0 +1,5 @@
+
+Vsquid:S1068"3Remove this unused "seralVersionUID" private field.(ÜÖ³øÿÿÿÿ8ıŸ×Îï-
+Gsquid:S1948	"$Make "cm" transient or serializable.(ùÏ¶™ùÿÿÿÿ8ÕÙÎï-
+>squid:S1165	"Make this "cm" field final.(ùÏ¶™ùÿÿÿÿ8Ùõ×Îï-
+~squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÜÖ³øÿÿÿÿ8ıŸ×Îï-

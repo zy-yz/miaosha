@@ -1,0 +1,5 @@
+
+Xsquid:S1191"5Use classes from the Java API instead of Sun classes.(Ï´Åùÿÿÿÿ8ŠáñÎï-
+isquid:UselessImportCheck"9Remove this unused import 'com.sun.tools.javac.jvm.Code'.(Ï´Åùÿÿÿÿ8Ç¶ÉÕï-
+Gsquid:S3330@"$Add the "HttpOnly" cookie attribute.(¡š€Ïûÿÿÿÿ8§¸±Ôï-
+gsquid:UselessImportCheck"7Remove this unused import 'org.apache.catalina.Server'.(ã¶²äÿÿÿÿÿ8„çÎï-

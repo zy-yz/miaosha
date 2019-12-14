@@ -1,0 +1,4 @@
+
+©%squid:RedundantThrowsDeclarationCheck"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Þýÿÿÿÿ8åè¤£ï-
+gsquid:UselessImportCheck"<Remove this unused import 'org.springframework.boot.Banner'.(ö‡íæ8ïÃ¨öï-
+esquid:UselessImportCheck";Remove this unused import 'javafx.application.Application'.(í™þj8´ÂŸöï-

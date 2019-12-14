@@ -1,0 +1,50 @@
+
+^squid:HiddenFieldCheck9"7Rename "code" which hides the field declared at line 5.(‚˜æÿÿÿÿÿ
+†"squid:ClassVariableVisibilityCheck	"SMake SUCCESS a static final constant or non-public and provide accessors if needed.(‚õŸäıÿÿÿÿ
+‰"squid:ClassVariableVisibilityCheck"VMake BIND_ERROR a static final constant or non-public and provide accessors if needed.(Ïş¶ıÿÿÿÿ
+†"squid:ClassVariableVisibilityCheck
+"XMake SERVER_ERROR a static final constant or non-public and provide accessors if needed.(Ëµ«ù
+nsquid:S3008	"RRename this field "SUCCESS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚õŸäıÿÿÿÿ
+Lsquid:S1444"0Make this "public static BIND_ERROR" field final(Ïş¶ıÿÿÿÿ
+Isquid:S1444
+"2Make this "public static SERVER_ERROR" field final(Ëµ«ù
+nsquid:S3008
+"WRename this field "SERVER_ERROR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëµ«ù
+Isquid:S1444	"-Make this "public static SUCCESS" field final(‚õŸäıÿÿÿÿ
+qsquid:S3008"URename this field "BIND_ERROR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïş¶ıÿÿÿÿ
+Ssquid:S1444"5Make this "public static REQUEST_ILLEGAL" field final(ç‹Ê8°×ôîï-
+]squid:S1444":Make this "public static ACCESS_LIMIT_REACHED" field final(²öª¼úÿÿÿÿ8°×ôîï-
+Vsquid:S1444"3Make this "public static SESSION_ERROR" field final(¥€‚ƒÿÿÿÿÿ8°×ôîï-
+Rsquid:S1444"4Make this "public static PASSWORD_EMPTY" field final(º€ÆÂ8°×ôîï-
+Psquid:S1444"2Make this "public static MOBILE_EMPTY" field final(­«¥À8°×ôîï-
+Psquid:S1444"2Make this "public static MOBILE_ERROR" field final(…„§8°×ôîï-
+Ysquid:S1444"6Make this "public static MOBILE_NOT_EXIST" field final(ë‚ß³üÿÿÿÿ8°×ôîï-
+Wsquid:S1444"4Make this "public static PASSWORD_ERROR" field final(»êÚ¸ıÿÿÿÿ8°×ôîï-
+Xsquid:S1444"5Make this "public static ORDER_NOT_EXIST" field final(²ÿ†‘ùÿÿÿÿ8°×ôîï-
+Qsquid:S1444"3Make this "public static MIAO_SHA_OVER" field final(¹Ö¢8°×ôîï-
+Xsquid:S1444"5Make this "public static REPEATE_MIAOSHA" field final(€â¶Úúÿÿÿÿ8°×ôîï-
+Usquid:S1444 "2Make this "public static MIAOSHA_FAIL" field final(¼½ş¦úÿÿÿÿ8°×ôîï-
+"squid:ClassVariableVisibilityCheck"[Make REQUEST_ILLEGAL a static final constant or non-public and provide accessors if needed.(ç‹Ê8°×ôîï-
+š"squid:ClassVariableVisibilityCheck"`Make ACCESS_LIMIT_REACHED a static final constant or non-public and provide accessors if needed.(²öª¼úÿÿÿÿ8°×ôîï-
+“"squid:ClassVariableVisibilityCheck"YMake SESSION_ERROR a static final constant or non-public and provide accessors if needed.(¥€‚ƒÿÿÿÿÿ8°×ôîï-
+"squid:ClassVariableVisibilityCheck"ZMake PASSWORD_EMPTY a static final constant or non-public and provide accessors if needed.(º€ÆÂ8°×ôîï-
+"squid:ClassVariableVisibilityCheck"XMake MOBILE_EMPTY a static final constant or non-public and provide accessors if needed.(­«¥À8°×ôîï-
+"squid:ClassVariableVisibilityCheck"XMake MOBILE_ERROR a static final constant or non-public and provide accessors if needed.(…„§8°×ôîï-
+–"squid:ClassVariableVisibilityCheck"\Make MOBILE_NOT_EXIST a static final constant or non-public and provide accessors if needed.(ë‚ß³üÿÿÿÿ8°×ôîï-
+”"squid:ClassVariableVisibilityCheck"ZMake PASSWORD_ERROR a static final constant or non-public and provide accessors if needed.(»êÚ¸ıÿÿÿÿ8°×ôîï-
+•"squid:ClassVariableVisibilityCheck"[Make ORDER_NOT_EXIST a static final constant or non-public and provide accessors if needed.(²ÿ†‘ùÿÿÿÿ8°×ôîï-
+"squid:ClassVariableVisibilityCheck"YMake MIAO_SHA_OVER a static final constant or non-public and provide accessors if needed.(¹Ö¢8°×ôîï-
+•"squid:ClassVariableVisibilityCheck"[Make REPEATE_MIAOSHA a static final constant or non-public and provide accessors if needed.(€â¶Úúÿÿÿÿ8°×ôîï-
+’"squid:ClassVariableVisibilityCheck "XMake MIAOSHA_FAIL a static final constant or non-public and provide accessors if needed.(¼½ş¦úÿÿÿÿ8°×ôîï-
+xsquid:S3008"ZRename this field "REQUEST_ILLEGAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç‹Ê8°×ôîï-
+‚squid:S3008"_Rename this field "ACCESS_LIMIT_REACHED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²öª¼úÿÿÿÿ8°×ôîï-
+{squid:S3008"XRename this field "SESSION_ERROR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥€‚ƒÿÿÿÿÿ8°×ôîï-
+wsquid:S3008"YRename this field "PASSWORD_EMPTY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º€ÆÂ8°×ôîï-
+usquid:S3008"WRename this field "MOBILE_EMPTY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­«¥À8°×ôîï-
+usquid:S3008"WRename this field "MOBILE_ERROR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…„§8°×ôîï-
+~squid:S3008"[Rename this field "MOBILE_NOT_EXIST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë‚ß³üÿÿÿÿ8°×ôîï-
+|squid:S3008"YRename this field "PASSWORD_ERROR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»êÚ¸ıÿÿÿÿ8°×ôîï-
+}squid:S3008"ZRename this field "ORDER_NOT_EXIST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÿ†‘ùÿÿÿÿ8°×ôîï-
+vsquid:S3008"XRename this field "MIAO_SHA_OVER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹Ö¢8°×ôîï-
+}squid:S3008"ZRename this field "REPEATE_MIAOSHA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€â¶Úúÿÿÿÿ8°×ôîï-
+zsquid:S3008 "WRename this field "MIAOSHA_FAIL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼½ş¦úÿÿÿÿ8°×ôîï-

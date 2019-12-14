@@ -1,0 +1,21 @@
+
+[
+squid:S106W"9Replace this use of System.out or System.err by a logger.(§•¥™ÿÿÿÿÿ8ùµ¬¢ğ-
+esquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(‚†®÷8±°ô¡ğ-
+wsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ˆ³Ÿò8ŞÚö¡ğ-
+qsquid:S2095>"NUse try-with-resources or close this "RandomAccessFile" in a "finally" clause.(à”ô…úÿÿÿÿ8şô¢ğ-
+csquid:UselessImportCheck"3Remove this unused import 'java.util.RandomAccess'.(çºÜúÿÿÿÿ8şô¢ğ-
+d
+squid:S899?"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8ˆ±¢ğ-
+[
+squid:S106]"9Replace this use of System.out or System.err by a logger.(Ÿ¯¡çÿÿÿÿÿ8âø±¢ğ-
+Vsquid:S1197M"8Move the array designator from the variable to the type.(Ñóğü8á°¥¢ğ-
+_squid:S1075:"ARefactor your code to get this URI from a customizable parameter.(Ÿ•Ä•8Æˆ¢ğ-
+V
+squid:S106a"9Replace this use of System.out or System.err by a logger.(ÏºĞÚ8œØ³¢ğ-
+lsquid:S4042<"IUse "java.nio.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8Şæ‹¢ğ-
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(œ‡êü8ªş‚¢ğ-
+]
+squid:S899<";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8Şæ‹¢ğ-
+nsquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(À´óûÿÿÿÿ8¾½¢ğ-
