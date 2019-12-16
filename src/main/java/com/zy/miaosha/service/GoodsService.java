@@ -1,5 +1,6 @@
 package com.zy.miaosha.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.zy.miaosha.dao.GoodsDao;
 import com.zy.miaosha.domain.MiaoshaGoods;
 import com.zy.miaosha.vo.GoodsVo;
@@ -22,10 +23,19 @@ public class GoodsService {
         return goodsDao.getGoodsVoByGoodsId(goodsId);
     }
 
-    public void reduceStock(GoodsVo goods){
+    public Boolean reduceStock(GoodsVo goods){
         MiaoshaGoods g = new MiaoshaGoods();
         g.setGoodsId(goods.getId());
-        goodsDao.reduceStock(g);
+        int ret = goodsDao.reduceStock(g);
+        return ret > 0;
+    }
 
+    public void resetStock(List<GoodsVo> goodsList){
+        for(GoodsVo goods : goodsList){
+            MiaoshaGoods g = new MiaoshaGoods();
+            g.setGoodsId(goods.getId());
+            g.setStockCount(goods.getStockCount());
+            goodsDao.resetStock(g);
+        }
     }
 }

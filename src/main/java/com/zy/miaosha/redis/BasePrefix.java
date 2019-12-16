@@ -1,6 +1,5 @@
 package com.zy.miaosha.redis;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 
 public abstract class BasePrefix implements KeyPrefix {
 
@@ -8,25 +7,22 @@ public abstract class BasePrefix implements KeyPrefix {
 
     private String prefix;
 
-    public BasePrefix(String prefix){
-        //0代表永不过期
-        this(0,prefix);
+    public BasePrefix(String prefix) {//0代表永不过期
+        this(0, prefix);
     }
 
-    public BasePrefix(int expireSeconds,String prefix){
+    public BasePrefix( int expireSeconds, String prefix) {
         this.expireSeconds = expireSeconds;
         this.prefix = prefix;
     }
 
-    @Override
-    public int expireSeconds() {
-        //0代表永不过期
+    public int expireSeconds() {//默认0代表永不过期
         return expireSeconds;
     }
 
-    @Override
     public String getPrefix() {
         String className = getClass().getSimpleName();
-        return className+ ":"+prefix;
+        return className+":" + prefix;
     }
+
 }

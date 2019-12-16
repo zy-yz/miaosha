@@ -80,5 +80,24 @@ public class MiaoshaUserService {
 
     }
 
+    // http://blog.csdn.net/tTU1EvLDeLFq5btqiK/article/details/78693323
+    public boolean updatePassword(String token, long id, String formPass) {
+        //取user
+        MiaoshaUser user = getById(id);
+        if(user == null) {
+            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+        }
+        //更新数据库
+        MiaoshaUser toBeUpdate = new MiaoshaUser();
+        toBeUpdate.setId(id);
+        toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
+        miaoshaUserDao.update(toBeUpdate);
+        //处理缓存
+        redisService.delete(MiaoshaUserKey.getById, ""+id);
+        user.setPassword(toBeUpdate.getPassword());
+        redisService.set(MiaoshaUserKey.token, token, user);
+        return true;
+    }
+
 
 }
