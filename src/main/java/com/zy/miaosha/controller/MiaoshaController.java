@@ -39,22 +39,22 @@ import java.util.List;
 public class MiaoshaController implements InitializingBean {
 
     @Autowired
-    private MiaoshaUserService userService;
+    MiaoshaUserService userService;
 
     @Autowired
-    private RedisService redisService;
+    RedisService redisService;
 
     @Autowired
-    private GoodsService goodsService;
+    GoodsService goodsService;
 
     @Autowired
-    private OrderService orderService;
+    OrderService orderService;
 
     @Autowired
-    private MiaoshaService miaoshaService;
+    MiaoshaService miaoshaService;
 
     @Autowired
-    private MQSender sender;
+    MQSender sender;
 
     private HashMap<Long, Boolean> localOverMap =  new HashMap<Long, Boolean>();
 
@@ -94,7 +94,7 @@ public class MiaoshaController implements InitializingBean {
      * */
     @RequestMapping(value="/{path}/do_miaosha", method=RequestMethod.POST)
     @ResponseBody
-    public Result<Integer> miaosha(Model model, MiaoshaUser user,
+    public Result<Integer> miaosha(Model model,MiaoshaUser user,
                                    @RequestParam("goodsId")long goodsId,
                                    @PathVariable("path") String path) {
         model.addAttribute("user", user);
@@ -102,7 +102,7 @@ public class MiaoshaController implements InitializingBean {
             return Result.error(CodeMsg.SESSION_ERROR);
         }
         //验证path
-        boolean check = miaoshaService.checkPath(user,goodsId,path);
+        boolean check = miaoshaService.checkPath(user, goodsId, path);
         if(!check){
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
@@ -163,40 +163,42 @@ public class MiaoshaController implements InitializingBean {
         return Result.success(result);
     }
 
-    @AccessLimit(seconds = 5,maxCount = 5,needLogin = true)
-    @RequestMapping(value="/path",method = RequestMethod.GET)
+    @AccessLimit(seconds=5, maxCount=5, needLogin=true)
+    @RequestMapping(value="/path", method=RequestMethod.GET)
     @ResponseBody
-    public Result<String> getMiaoshaPath(HttpServletRequest request,MiaoshaUser user,
-                                         @RequestParam("goodsId") long goodsId,
-                                         @RequestParam(value = "verifyCode",defaultValue = "0")int verifyCode){
-        if(user == null){
+    public Result<String> getMiaoshaPath(HttpServletRequest request, MiaoshaUser user,
+                                         @RequestParam("goodsId")long goodsId,
+                                         @RequestParam(value="verifyCode", defaultValue="0")int verifyCode
+    ) {
+        if(user == null) {
             return Result.error(CodeMsg.SESSION_ERROR);
         }
-        boolean check = miaoshaService.checkVerifyCode(user,goodsId,verifyCode);
-        if(!check){
+        boolean check = miaoshaService.checkVerifyCode(user, goodsId, verifyCode);
+        if(!check) {
             return Result.error(CodeMsg.REQUEST_ILLEGAL);
         }
-        String path = miaoshaService.createMiaoshaPath(user,goodsId);
+        String path  =miaoshaService.createMiaoshaPath(user, goodsId);
         return Result.success(path);
     }
 
-    @RequestMapping(value ="/verifyCode",method = RequestMethod.GET)
+
+    @RequestMapping(value="/verifyCode", method=RequestMethod.GET)
     @ResponseBody
-    public Result<String> getMiaoshaVerifyCod(HttpServletResponse response,MiaoshaUser user,@RequestParam("goodsId") long goodsId){
-        if(user == null){
+    public Result<String> getMiaoshaVerifyCod(HttpServletResponse response,MiaoshaUser user,
+                                              @RequestParam("goodsId")long goodsId) {
+        if(user == null) {
             return Result.error(CodeMsg.SESSION_ERROR);
         }
         try {
-            BufferedImage image = miaoshaService.createVerifyCode(user,goodsId);
+            BufferedImage image  = miaoshaService.createVerifyCode(user, goodsId);
             OutputStream out = response.getOutputStream();
-            ImageIO.write(image,"JPEG",out);
+            ImageIO.write(image, "JPEG", out);
             out.flush();
             out.close();
             return null;
-        }catch (Exception e){
+        }catch(Exception e) {
             e.printStackTrace();
             return Result.error(CodeMsg.MIAOSHA_FAIL);
         }
     }
-
 }

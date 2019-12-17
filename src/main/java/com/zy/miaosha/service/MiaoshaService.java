@@ -24,34 +24,34 @@ import java.util.Random;
 public class MiaoshaService {
 
     @Autowired
-    private GoodsService goodsService;
+    GoodsService goodsService;
 
     @Autowired
-    private OrderService orderService;
+    OrderService orderService;
 
     @Autowired
-    private RedisService redisService;
+    RedisService redisService;
 
     @Transactional
-    public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods){
-        //减库存，下订单，写入秒杀订单
+    public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
+        //减库存 下订单 写入秒杀订单
         boolean success = goodsService.reduceStock(goods);
-        if(success){
-            return orderService.createOrder(user,goods);
-        }
-        else {
+        if(success) {
+            //order_info maiosha_order
+            return orderService.createOrder(user, goods);
+        }else {
             setGoodsOver(goods.getId());
             return null;
         }
     }
 
-    public long getMiaoshaResult(Long userId,long goodsId){
-        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(userId,goodsId);
-        if(order != null) {
+    public long getMiaoshaResult(Long userId, long goodsId) {
+        MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
+        if(order != null) {//秒杀成功
             return order.getOrderId();
         }else {
             boolean isOver = getGoodsOver(goodsId);
-            if(isOver){
+            if(isOver) {
                 return -1;
             }else {
                 return 0;
@@ -59,12 +59,12 @@ public class MiaoshaService {
         }
     }
 
-    private void setGoodsOver(Long goodsId){
-        redisService.set(MiaoshaKey.isGoodsOver,""+goodsId,true);
+    private void setGoodsOver(Long goodsId) {
+        redisService.set(MiaoshaKey.isGoodsOver, ""+goodsId, true);
     }
 
-    private boolean getGoodsOver(long goodsId){
-        return redisService.exists(MiaoshaKey.isGoodsOver,""+goodsId);
+    private boolean getGoodsOver(long goodsId) {
+        return redisService.exists(MiaoshaKey.isGoodsOver, ""+goodsId);
     }
 
     public void reset(List<GoodsVo> goodsList) {
@@ -73,31 +73,19 @@ public class MiaoshaService {
     }
 
     public boolean checkPath(MiaoshaUser user, long goodsId, String path) {
-        if(user == null || path == null){
+        if(user == null || path == null) {
             return false;
         }
-        String pathOld = redisService.get(MiaoshaKey.getMiaoshaPath,""+user.getId() + "" + goodsId,String.class);
+        String pathOld = redisService.get(MiaoshaKey.getMiaoshaPath, ""+user.getId() + "_"+ goodsId, String.class);
         return path.equals(pathOld);
     }
 
-    public boolean checkVerifyCode(MiaoshaUser user, long goodsId, int verifyCode) {
-        if(user==null || goodsId <=0){
-            return false;
-        }
-        Integer codeOld = redisService.get(MiaoshaKey.getMiaoshaVerifyCode,user.getId()+","+goodsId,Integer.class);
-        if(codeOld == null || codeOld - verifyCode != 0){
-            return false;
-        }
-        redisService.delete(MiaoshaKey.getMiaoshaVerifyCode,user.getId()+","+goodsId);
-        return true;
-    }
-
     public String createMiaoshaPath(MiaoshaUser user, long goodsId) {
-        if(user == null || goodsId<=0){
+        if(user == null || goodsId <=0) {
             return null;
         }
         String str = MD5Util.md5(UUIDUtil.uuid()+"123456");
-        redisService.set(MiaoshaKey.getMiaoshaPath,""+user.getId()+"_"+goodsId,str);
+        redisService.set(MiaoshaKey.getMiaoshaPath, ""+user.getId() + "_"+ goodsId, str);
         return str;
     }
 
@@ -135,6 +123,18 @@ public class MiaoshaService {
         redisService.set(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId, rnd);
         //输出图片
         return image;
+    }
+
+    public boolean checkVerifyCode(MiaoshaUser user, long goodsId, int verifyCode) {
+        if(user == null || goodsId <=0) {
+            return false;
+        }
+        Integer codeOld = redisService.get(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId, Integer.class);
+        if(codeOld == null || codeOld - verifyCode != 0 ) {
+            return false;
+        }
+        redisService.delete(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId);
+        return true;
     }
 
     private static int calc(String exp) {
