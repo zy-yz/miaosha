@@ -61,6 +61,7 @@ public class MiaoshaController implements InitializingBean {
     /**
      * 系统初始化
      * */
+    @Override
     public void afterPropertiesSet() throws Exception {
         List<GoodsVo> goodsList = goodsService.listGoodsVo();
         if(goodsList == null) {

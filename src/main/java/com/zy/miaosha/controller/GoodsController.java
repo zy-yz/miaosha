@@ -112,7 +112,8 @@ public class GoodsController {
 
     @RequestMapping(value="/detail/{goodsId}")
     @ResponseBody
-    public Result<GoodsDetailVo> detail(HttpServletRequest request, HttpServletResponse response, Model model, MiaoshaUser user,
+    public Result<GoodsDetailVo> detail(HttpServletRequest request, HttpServletResponse response,
+                                        Model model, MiaoshaUser user,
                                         @PathVariable("goodsId")long goodsId) {
         GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
         long startAt = goods.getStartDate().getTime();

@@ -32,6 +32,9 @@ public class LoginController {
         return "login";
     }
 
+    /**
+     * @Valid与@Validated注解进行数据校验，在实体类上设置区间.
+     * */
     @RequestMapping("/do_login")
     @ResponseBody
     public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo){

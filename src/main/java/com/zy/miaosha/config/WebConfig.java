@@ -22,6 +22,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         argumentResolvers.add(userArgumentResolver);
     }
 
+    @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(accessInterceptor);
     }
