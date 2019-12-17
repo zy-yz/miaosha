@@ -33,7 +33,7 @@ public class OrderController {
     @Autowired
     private GoodsService goodsService;
 
-    @RequestMapping("detail")
+    @RequestMapping("/detail")
     @ResponseBody
     public Result<OrderDetailVo> info(Model model, MiaoshaUser user, @RequestParam("orderId") long orderId){
         if(user == null){

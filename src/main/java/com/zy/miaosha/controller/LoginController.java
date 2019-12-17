@@ -22,10 +22,10 @@ public class LoginController {
     private static Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
-    MiaoshaUserService userService;
+    private MiaoshaUserService userService;
 
     @Autowired
-    RedisService redisService;
+    private RedisService redisService;
 
     @RequestMapping("/to_login")
     public String toLogin(){

@@ -13,7 +13,7 @@ public class MQSender {
     private static Logger log = LoggerFactory.getLogger(MQSender.class);
 
     @Autowired
-    AmqpTemplate amqpTemplate ;
+    private AmqpTemplate amqpTemplate ;
 
     public void sendMiaoshaMessage(MiaoshaMessage mm) {
         String msg = RedisService.beanToString(mm);

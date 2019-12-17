@@ -20,7 +20,7 @@ public class OrderService {
     OrderDao orderDao;
 
     @Autowired
-    RedisService redisService;
+    private RedisService redisService;
 
     public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
         //return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
