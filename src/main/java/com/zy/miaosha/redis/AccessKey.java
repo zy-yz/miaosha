@@ -1,8 +1,8 @@
 package com.zy.miaosha.redis;
 
-public class AccessKey extends BasePrefix{
+public class AccessKey extends BasePrefix {
 
-    private AccessKey( int expireSeconds, String prefix) {
+    private AccessKey(int expireSeconds, String prefix) {
         super(expireSeconds, prefix);
     }
 

@@ -15,6 +15,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(METHOD)
 public @interface AccessLimit {
     int seconds();
+
     int maxCount();
+
     boolean needLogin() default true;
 }

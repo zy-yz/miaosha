@@ -28,19 +28,19 @@ public class LoginController {
     private RedisService redisService;
 
     @RequestMapping("/to_login")
-    public String toLogin(){
+    public String toLogin() {
         return "login";
     }
 
     /**
      * @Valid与@Validated注解进行数据校验，在实体类上设置区间.
-     * */
+     */
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo){
+    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         log.info(loginVo.toString());
         //登录
-        userService.login(response,loginVo);
+        userService.login(response, loginVo);
         return Result.success(true);
     }
 }

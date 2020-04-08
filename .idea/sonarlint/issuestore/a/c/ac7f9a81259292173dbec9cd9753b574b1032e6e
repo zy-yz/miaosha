@@ -1,8 +1,8 @@
 
+squid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "dbPass".(Êçàôüÿÿÿÿ8€’üÔï-
 ysquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¯ô«ç8€’üÔï-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(ä¯½éüÿÿÿÿ8€’üÔï-
 nsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(úÔÆÍüÿÿÿÿ8€’üÔï-
 U
 squid:S106"9Replace this use of System.out or System.err by a logger.(ƒÚáB8€’üÔï-
-[
-squid:S106"9Replace this use of System.out or System.err by a logger.(ä¯½éüÿÿÿÿ8€’üÔï-
-squid:S1488"^Immediately return this expression instead of assigning it to the temporary variable "dbPass".(Êçàôüÿÿÿÿ8€’üÔï-

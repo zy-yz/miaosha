@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/user")
 public class UserController {
 
-	@Autowired
+    @Autowired
     MiaoshaUserService userService;
-	
-	@Autowired
+
+    @Autowired
     RedisService redisService;
-	
+
     @RequestMapping("/info")
     @ResponseBody
     public Result<MiaoshaUser> info(Model model, MiaoshaUser user) {
         return Result.success(user);
     }
-    
+
 }

@@ -1,3 +1,11 @@
 
-csquid:UselessImportCheck"8Remove this unused import 'com.zy.miaosha.domain.Goods'.(ˆÿ›ô8ÉêÒòï-
-asquid:S3752'">Add a "method" parameter to this "@RequestMapping" annotation.(î¸†¦ùÿÿÿÿ8¹¨Ëóï-
+ksquid:S4488L"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Î¼±‹úÿÿÿÿ8µ÷¶Ï÷-
+jsquid:CommentedOutCodeLine‡"<This block of commented-out lines of code should be removed.(äÁñü8µ÷¶Ï÷-
+Gsquid:S1148É"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8µ÷¶Ï÷-
+lsquid:S4488¨"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÿúëûÿÿÿÿÿ8µ÷¶Ï÷-
+~squid:UselessImportCheck"NRemove this unused import 'com.sun.org.apache.xpath.internal.operations.Bool'.(™¦èûÿÿÿÿ8µ÷¶Ï÷-
+gsquid:S4488º"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ûæ¥8µ÷¶Ï÷-
+|squid:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿâêûÿÿÿÿ8µ÷¶Ï÷-
+msquid:S4488`"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ïşÃúÿÿÿÿ8µ÷¶Ï÷-
+Xsquid:S1191"5Use classes from the Java API instead of Sun classes.(™¦èûÿÿÿÿ8µ÷¶Ï÷-
+gsquid:S4488›"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ğÅÉô8µ÷¶Ï÷-

@@ -4,18 +4,20 @@ import com.zy.miaosha.dao.UserDao;
 import com.zy.miaosha.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional(readOnly = false)
 @Service
 public class UserService {
 
     @Autowired
     private UserDao userDao;
 
-    public User getById(int id){
+    public User getById(int id) {
         return userDao.getById(id);
     }
 
-    public boolean tx(){
+    public boolean tx() {
         User u1 = new User();
         u1.setId(2);
         u1.setName("2222");

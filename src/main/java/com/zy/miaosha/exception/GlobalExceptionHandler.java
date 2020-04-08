@@ -17,19 +17,19 @@ import java.util.List;
 @ControllerAdvice
 @ResponseBody
 public class GlobalExceptionHandler {
-    @ExceptionHandler(value=Exception.class)
-    public Result<String> exceptionHandler(HttpServletRequest request, Exception e){
+    @ExceptionHandler(value = Exception.class)
+    public Result<String> exceptionHandler(HttpServletRequest request, Exception e) {
         e.printStackTrace();
-        if(e instanceof GlobalException) {
-            GlobalException ex = (GlobalException)e;
+        if (e instanceof GlobalException) {
+            GlobalException ex = (GlobalException) e;
             return Result.error(ex.getCm());
-        }else if(e instanceof org.springframework.validation.BindException) {
-            org.springframework.validation.BindException ex = (BindException)e;
+        } else if (e instanceof org.springframework.validation.BindException) {
+            org.springframework.validation.BindException ex = (BindException) e;
             List<ObjectError> errors = ex.getAllErrors();
             ObjectError error = errors.get(0);
             String msg = error.getDefaultMessage();
             return Result.error(CodeMsg.BIND_ERROR.fillArgs(msg));
-        }else {
+        } else {
             return Result.error(CodeMsg.SERVER_ERROR);
         }
     }

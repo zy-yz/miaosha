@@ -22,18 +22,18 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
     /**
      * supportsParameter（支持参数）：可以设置一些标志，表示你这个分解器可以处理这些参数，返回ture才执行
-     * */
+     */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         Class<?> clazz = parameter.getParameterType();
-        return clazz==MiaoshaUser.class;
+        return clazz == MiaoshaUser.class;
     }
 
     /**
-    *resolveArgument()函数
-     *
+     * resolveArgument()函数
+     * <p>
      * resolveArgument（分解实参）：处理实参的具体方法
-    * */
+     */
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {

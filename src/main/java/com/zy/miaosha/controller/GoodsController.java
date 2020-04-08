@@ -42,7 +42,7 @@ public class GoodsController {
     @Autowired
     ApplicationContext applicationContext;
 
-    @RequestMapping(value="/to_list", produces="text/html")
+    @RequestMapping(value = "/to_list", produces = "text/html")
     @ResponseBody
     public String list(HttpServletRequest request, HttpServletResponse response, Model model, MiaoshaUser user) {
         model.addAttribute("user", user);
@@ -54,25 +54,25 @@ public class GoodsController {
         List<GoodsVo> goodsList = goodsService.listGoodsVo();
         model.addAttribute("goodsList", goodsList);
 //    	 return "goods_list";
-        SpringWebContext ctx = new SpringWebContext(request,response,
-                request.getServletContext(),request.getLocale(), model.asMap(), applicationContext );
+        SpringWebContext ctx = new SpringWebContext(request, response,
+                request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
         //手动渲染
-       String html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
-        if(!StringUtils.isEmpty(html)) {
+        String html = thymeleafViewResolver.getTemplateEngine().process("goods_list", ctx);
+        if (!StringUtils.isEmpty(html)) {
             redisService.set(GoodsKey.getGoodsList, "", html);
         }
         return html;
     }
 
-    @RequestMapping(value = "/to_detail/{goodsId}",produces = "text/html")
+    @RequestMapping(value = "/to_detail/{goodsId}", produces = "text/html")
     @ResponseBody
     public String detail2(HttpServletRequest request, HttpServletResponse response, Model model, MiaoshaUser user,
-                         @PathVariable("goodsId")long goodsId) {
+                          @PathVariable("goodsId") long goodsId) {
         model.addAttribute("user", user);
 
         //取缓存
-        String html = redisService.get(GoodsKey.getGoodsDetail,""+goodsId,String.class);
-        if(!StringUtils.isEmpty(html)){
+        String html = redisService.get(GoodsKey.getGoodsDetail, "" + goodsId, String.class);
+        if (!StringUtils.isEmpty(html)) {
             return html;
         }
 
@@ -87,47 +87,47 @@ public class GoodsController {
         int miaoshaStatus = 0;
         int remainSeconds = 0;
         //秒杀还没开始，倒计时
-        if(now < startAt ) {
+        if (now < startAt) {
             miaoshaStatus = 0;
-            remainSeconds = (int)((startAt - now )/1000);
+            remainSeconds = (int) ((startAt - now) / 1000);
             //秒杀已经结束
-        }else  if(now > endAt){
+        } else if (now > endAt) {
             miaoshaStatus = 2;
             remainSeconds = -1;
-        }else {//秒杀进行中
+        } else {//秒杀进行中
             miaoshaStatus = 1;
             remainSeconds = 0;
         }
         model.addAttribute("miaoshaStatus", miaoshaStatus);
         model.addAttribute("remainSeconds", remainSeconds);
-       // return "goods_detail";
-        SpringWebContext ctx = new SpringWebContext(request,response,
-                request.getServletContext(),request.getLocale(), model.asMap(), applicationContext );
-        html = thymeleafViewResolver.getTemplateEngine().process("goods_detail",ctx);
+        // return "goods_detail";
+        SpringWebContext ctx = new SpringWebContext(request, response,
+                request.getServletContext(), request.getLocale(), model.asMap(), applicationContext);
+        html = thymeleafViewResolver.getTemplateEngine().process("goods_detail", ctx);
         if (!StringUtils.isEmpty(html)) {
-            redisService.set(GoodsKey.getGoodsDetail,""+goodsId,html);
+            redisService.set(GoodsKey.getGoodsDetail, "" + goodsId, html);
         }
         return html;
     }
 
-    @RequestMapping(value="/detail/{goodsId}")
+    @RequestMapping(value = "/detail/{goodsId}")
     @ResponseBody
     public Result<GoodsDetailVo> detail(HttpServletRequest request, HttpServletResponse response,
                                         Model model, MiaoshaUser user,
-                                        @PathVariable("goodsId")long goodsId) {
+                                        @PathVariable("goodsId") long goodsId) {
         GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
         long startAt = goods.getStartDate().getTime();
         long endAt = goods.getEndDate().getTime();
         long now = System.currentTimeMillis();
         int miaoshaStatus = 0;
         int remainSeconds = 0;
-        if(now < startAt ) {//秒杀还没开始，倒计时
+        if (now < startAt) {//秒杀还没开始，倒计时
             miaoshaStatus = 0;
-            remainSeconds = (int)((startAt - now )/1000);
-        }else  if(now > endAt){//秒杀已经结束
+            remainSeconds = (int) ((startAt - now) / 1000);
+        } else if (now > endAt) {//秒杀已经结束
             miaoshaStatus = 2;
             remainSeconds = -1;
-        }else {//秒杀进行中
+        } else {//秒杀进行中
             miaoshaStatus = 1;
             remainSeconds = 0;
         }

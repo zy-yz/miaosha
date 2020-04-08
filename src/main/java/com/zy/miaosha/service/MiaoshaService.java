@@ -36,10 +36,10 @@ public class MiaoshaService {
     public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
         //减库存 下订单 写入秒杀订单
         boolean success = goodsService.reduceStock(goods);
-        if(success) {
+        if (success) {
             //order_info maiosha_order
             return orderService.createOrder(user, goods);
-        }else {
+        } else {
             setGoodsOver(goods.getId());
             return null;
         }
@@ -47,24 +47,24 @@ public class MiaoshaService {
 
     public long getMiaoshaResult(Long userId, long goodsId) {
         MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
-        if(order != null) {//秒杀成功
+        if (order != null) {//秒杀成功
             return order.getOrderId();
-        }else {
+        } else {
             boolean isOver = getGoodsOver(goodsId);
-            if(isOver) {
+            if (isOver) {
                 return -1;
-            }else {
+            } else {
                 return 0;
             }
         }
     }
 
     private void setGoodsOver(Long goodsId) {
-        redisService.set(MiaoshaKey.isGoodsOver, ""+goodsId, true);
+        redisService.set(MiaoshaKey.isGoodsOver, "" + goodsId, true);
     }
 
     private boolean getGoodsOver(long goodsId) {
-        return redisService.exists(MiaoshaKey.isGoodsOver, ""+goodsId);
+        return redisService.exists(MiaoshaKey.isGoodsOver, "" + goodsId);
     }
 
     public void reset(List<GoodsVo> goodsList) {
@@ -73,24 +73,24 @@ public class MiaoshaService {
     }
 
     public boolean checkPath(MiaoshaUser user, long goodsId, String path) {
-        if(user == null || path == null) {
+        if (user == null || path == null) {
             return false;
         }
-        String pathOld = redisService.get(MiaoshaKey.getMiaoshaPath, ""+user.getId() + "_"+ goodsId, String.class);
+        String pathOld = redisService.get(MiaoshaKey.getMiaoshaPath, "" + user.getId() + "_" + goodsId, String.class);
         return path.equals(pathOld);
     }
 
     public String createMiaoshaPath(MiaoshaUser user, long goodsId) {
-        if(user == null || goodsId <=0) {
+        if (user == null || goodsId <= 0) {
             return null;
         }
-        String str = MD5Util.md5(UUIDUtil.uuid()+"123456");
-        redisService.set(MiaoshaKey.getMiaoshaPath, ""+user.getId() + "_"+ goodsId, str);
+        String str = MD5Util.md5(UUIDUtil.uuid() + "123456");
+        redisService.set(MiaoshaKey.getMiaoshaPath, "" + user.getId() + "_" + goodsId, str);
         return str;
     }
 
     public BufferedImage createVerifyCode(MiaoshaUser user, long goodsId) {
-        if(user == null || goodsId <=0) {
+        if (user == null || goodsId <= 0) {
             return null;
         }
         int width = 80;
@@ -120,20 +120,20 @@ public class MiaoshaService {
         g.dispose();
         //把验证码存到redis中
         int rnd = calc(verifyCode);
-        redisService.set(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId, rnd);
+        redisService.set(MiaoshaKey.getMiaoshaVerifyCode, user.getId() + "," + goodsId, rnd);
         //输出图片
         return image;
     }
 
     public boolean checkVerifyCode(MiaoshaUser user, long goodsId, int verifyCode) {
-        if(user == null || goodsId <=0) {
+        if (user == null || goodsId <= 0) {
             return false;
         }
-        Integer codeOld = redisService.get(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId, Integer.class);
-        if(codeOld == null || codeOld - verifyCode != 0 ) {
+        Integer codeOld = redisService.get(MiaoshaKey.getMiaoshaVerifyCode, user.getId() + "," + goodsId, Integer.class);
+        if (codeOld == null || codeOld - verifyCode != 0) {
             return false;
         }
-        redisService.delete(MiaoshaKey.getMiaoshaVerifyCode, user.getId()+","+goodsId);
+        redisService.delete(MiaoshaKey.getMiaoshaVerifyCode, user.getId() + "," + goodsId);
         return true;
     }
 
@@ -141,24 +141,25 @@ public class MiaoshaService {
         try {
             ScriptEngineManager manager = new ScriptEngineManager();
             ScriptEngine engine = manager.getEngineByName("JavaScript");
-            return (Integer)engine.eval(exp);
-        }catch(Exception e) {
+            return (Integer) engine.eval(exp);
+        } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
     }
 
-    private static char[] ops = new char[] {'+', '-', '*'};
+    private static char[] ops = new char[]{'+', '-', '*'};
+
     /**
      * + - *
-     * */
+     */
     private String generateVerifyCode(Random rdm) {
         int num1 = rdm.nextInt(10);
         int num2 = rdm.nextInt(10);
         int num3 = rdm.nextInt(10);
         char op1 = ops[rdm.nextInt(3)];
         char op2 = ops[rdm.nextInt(3)];
-        String exp = ""+ num1 + op1 + num2 + op2 + num3;
+        String exp = "" + num1 + op1 + num2 + op2 + num3;
         return exp;
     }
 }

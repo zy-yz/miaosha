@@ -1,3 +1,7 @@
 
-Isquid:S1444	"+Make this "public static token" field final(¡œ‹¹8¶Œ”¬ï-
-†"squid:ClassVariableVisibilityCheck	"QMake token a static final constant or non-public and provide accessors if needed.(¡œ‹¹8¶Œ”¬ï-
+Psquid:S1444
+"-Make this "public static getById" field final(Ğ½ì­şÿÿÿÿ8íÌèğ-
+Isquid:S1444	"+Make this "public static token" field final(¡œ‹¹8íÌèğ-
+"squid:ClassVariableVisibilityCheck
+"SMake getById a static final constant or non-public and provide accessors if needed.(Ğ½ì­şÿÿÿÿ8íÌèğ-
+†"squid:ClassVariableVisibilityCheck	"QMake token a static final constant or non-public and provide accessors if needed.(¡œ‹¹8íÌèğ-
